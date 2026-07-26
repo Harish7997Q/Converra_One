@@ -189,7 +189,7 @@ export const CalendarWidget: React.FC<CalendarWidgetProps> = ({
                 <strong>⏰ Time:</strong> {formatTimeString(selectedPreviewMeeting.startTime)} - {formatTimeString(selectedPreviewMeeting.endTime)}
               </div>
               <div style={{ fontSize: '13px', color: '#cbd5e1' }}>
-                <strong>👤 Organizer:</strong> {selectedPreviewMeeting.organizer.name} ({selectedPreviewMeeting.organizer.email})
+                <strong>👤 Organizer:</strong> {selectedPreviewMeeting.organizer?.name || 'Unknown'} ({selectedPreviewMeeting.organizer?.email || 'N/A'})
               </div>
               <div style={{ fontSize: '13px', color: '#cbd5e1' }}>
                 <strong>📍 Location:</strong> {selectedPreviewMeeting.location || 'Google Meet'}

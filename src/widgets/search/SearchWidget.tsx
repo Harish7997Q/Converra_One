@@ -78,7 +78,7 @@ export const SearchWidget: React.FC<SearchWidgetProps> = ({ onOpenMessage }) => 
           platform: msg.platform,
           platformIcon: getPlatformIcon(msg.platform),
           sender: `${msg.sender.name} (${msg.sender.email || msg.sender.id})`,
-          subject: msg.subject,
+          subject: msg.subject || '',
           snippet: msg.content.length > 140 ? `${msg.content.substring(0, 140)}...` : msg.content,
           relevanceScore: parseFloat(score.toFixed(2)),
           timestamp: formatTimeString(msg.timestamp)
@@ -96,7 +96,7 @@ export const SearchWidget: React.FC<SearchWidgetProps> = ({ onOpenMessage }) => 
             platformIcon: getPlatformIcon(t.sourcePlatform || PlatformType.GMAIL),
             sender: `Assignee: ${t.assignee}`,
             subject: `[Task] ${t.title}`,
-            snippet: t.description,
+            snippet: t.description || '',
             relevanceScore: 0.90,
             timestamp: formatTimeString(t.createdAt)
           });
@@ -111,9 +111,9 @@ export const SearchWidget: React.FC<SearchWidgetProps> = ({ onOpenMessage }) => 
           id: 'msg-101',
           platform: PlatformType.CALENDAR,
           platformIcon: '📅',
-          sender: e.organizer.name,
+          sender: e.organizer?.name || 'Unknown',
           subject: `[Event] ${e.title}`,
-          snippet: `${e.description} (${e.location})`,
+          snippet: `${e.description || ''} (${e.location || ''})`,
           relevanceScore: 0.95,
           timestamp: formatTimeString(e.startTime)
         });
